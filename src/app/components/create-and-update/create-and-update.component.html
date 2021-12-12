@@ -4,43 +4,128 @@
             <h4 class="card-title mb-4 text-center"> {{title}} </h4>
             <h6 class="card-subtitle mt-2 text-muted"> </h6>
             <div class="card-text">
-                <form>
+                <form [formGroup]="this.Form_" (ngSubmit)="sendRequestNewUser()">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="typeDocument">Type Document</label>
-                            <select required class="form-control" name="typeDocument" id="typeDocument">
+                            <select formControlName="typeDocument" required class="form-control" name="typeDocument"
+                                [ngClass]="{ 'is-invalid': this.submited && this.Form_['controls']['typeDocument']['errors'] }"
+                                id="typeDocument">
                                 <option value="" selected disabled hidden>Choose here</option>
-                                <option>Default select</option>
-                                <option>Default select</option>
-                                <option>Default select</option>
-                                <option>Default select</option>
-                                <option>Default select</option>
+                                <option *ngFor="let td of arrayTypeDocuments" [value]="td._id">{{ td.name }}</option>
                             </select>
+                            <div *ngIf="this.submited && this.Form_['controls']['typeDocument']['errors']"
+                                class="invalid-feedback">
+                                <div *ngIf="this.submited && this.Form_.controls['typeDocument']['errors']['required']">
+                                    Type Document is required
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="document">Document</label>
-                            <input required type="text" class="form-control" name="document" id="document"
-                                placeholder="1234567890">
+                            <input formControlName="document" required type="text" class="form-control" name="document"
+                                id="document" placeholder="1234567890"
+                                [ngClass]="{ 'is-invalid': this.submited && this.Form_['controls']['document']['errors'] }">
+                            <div *ngIf="this.submited && this.Form_['controls']['document']['errors']"
+                                class="invalid-feedback">
+                                <div *ngIf="this.submited && this.Form_.controls['document']['errors']['required']">
+                                    Document is required
+                                </div>
+                                <div *ngIf="this.submited && this.Form_.controls['document']['errors']['maxlength']">
+                                    Document max length must be 12 characters
+                                </div>
+                                <div *ngIf="this.submited && this.Form_.controls['document']['errors']['minlength']">
+                                    Document min length must be 6 characters
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="name">Name</label>
-                            <input required type="text" class="form-control" name="name" id="name" placeholder="Cosme">
+                            <input formControlName="name" required type="text" class="form-control" name="name"
+                                id="name" placeholder="1234567890"
+                                [ngClass]="{ 'is-invalid': this.submited && this.Form_['controls']['name']['errors'] }">
+                            <div *ngIf="this.submited && this.Form_['controls']['name']['errors']"
+                                class="invalid-feedback">
+                                <div *ngIf="this.submited && this.Form_.controls['name']['errors']['required']">
+                                    Name is required
+                                </div>
+                                <div *ngIf="this.submited && this.Form_.controls['name']['errors']['maxlength']">
+                                    Name max length must be 50 characters
+                                </div>
+                                <div *ngIf="this.submited && this.Form_.controls['name']['errors']['minlength']">
+                                    Name min length must be 2 characters
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="lastname">Lastname</label>
-                            <input required type="text" class="form-control" id="lastname" placeholder="Fulanito">
+                            <input formControlName="lastname" name="lastname" required type="text" class="form-control"
+                                id="lastname" placeholder="Fulanito"
+                                [ngClass]="{ 'is-invalid': this.submited && this.Form_['controls']['lastname']['errors'] }">
+                            <div *ngIf="this.submited && this.Form_['controls']['lastname']['errors']"
+                                class="invalid-feedback">
+                                <div *ngIf="this.submited && this.Form_.controls['lastname']['errors']['required']">
+                                    Lastname is required
+                                </div>
+                                <div *ngIf="this.submited && this.Form_.controls['lastname']['errors']['maxlength']">
+                                    Lastname max length must be 50 characters
+                                </div>
+                                <div *ngIf="this.submited && this.Form_.controls['lastname']['errors']['minlength']">
+                                    Lastname min length must be 2 characters
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="email">Email</label>
-                            <input required type="email" class="form-control" id="email" placeholder="Email">
+                            <input formControlName="email" required type="email" class="form-control" id="email"
+                                placeholder="Email"
+                                [ngClass]="{ 'is-invalid': this.submited && this.Form_['controls']['email']['errors'] }">
+                            <div *ngIf="this.submited && this.Form_['controls']['email']['errors']"
+                                class="invalid-feedback">
+                                <div *ngIf="this.submited && this.Form_.controls['email']['errors']['required']">
+                                    Email is required
+                                </div>
+                                <div *ngIf="this.submited && this.Form_.controls['email']['errors']['email']">
+                                    Email is not correct
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="phone">Phone</label>
-                            <input required type="number" class="form-control" id="phone" placeholder="3207043303">
+                            <input formControlName="phone" required type="number" class="form-control" name="phone"
+                                id="phone" placeholder="1234567890"
+                                [ngClass]="{ 'is-invalid': this.submited && this.Form_['controls']['phone']['errors'] }">
+                            <div *ngIf="this.submited && this.Form_['controls']['phone']['errors']"
+                                class="invalid-feedback">
+                                <div *ngIf="this.submited && this.Form_.controls['phone']['errors']['required']">
+                                    Phone is required
+                                </div>
+                                <div *ngIf="this.submited && this.Form_.controls['phone']['errors']['maxlength']">
+                                    Phone max length must be 12 characters
+                                </div>
+                                <div *ngIf="this.submited && this.Form_.controls['phone']['errors']['minlength']">
+                                    Phone min length must be 6 characters
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input formControlName="status" class="form-check-input" type="checkbox" id="gridCheck"
+                                [ngClass]="{ 'is-invalid': this.submited && this.Form_['controls']['status']['errors'] }">
+                            <label class="form-check-label" for="gridCheck">
+                                Active
+                            </label>
+                            <div *ngIf="this.submited && this.Form_['controls']['status']['errors']"
+                                class="invalid-feedback">
+                                <div *ngIf="this.submited && this.Form_.controls['status']['errors']['required']">
+                                    Status is required
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group text-center mt-3">

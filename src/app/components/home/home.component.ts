@@ -45,8 +45,7 @@ export class HomeComponent implements OnInit {
             this.__getAllAsistentes()
           },
             (error) => {
-              console.log(error)
-              alertify.error('An error occurred')
+              alertify.error(error.message)
             })
       },
       () => { alertify.error('Action cancelled') });
