@@ -1,3 +1,18 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['']">
+      <img
+        src="https://scontent.feoh4-4.fna.fbcdn.net/v/t1.18169-9/23622409_1637291922958944_352579239148441275_n.png?_nc_cat=108&cb=c578a115-c1c39920&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=oVZ-JZmIWQAAX_nqzuH&_nc_ht=scontent.feoh4-4.fna&oh=00_AT-IbcOKCdBXrYF0X97ci6WNF-HgP6DiOPiefvHDCrF67Q&oe=61DA61B3"
+        alt="" width="30" height="30" class="d-inline-block align-text-top mr-3">
+      GEAR Electric S.A.S.
+    </a>
+    <form class="form-inline my-2 my-lg-0">
+      <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button" [routerLink]="['create']">Create
+        User</button>
+    </form>
+  </div>
+</nav>
 <div>
   <router-outlet></router-outlet>
 </div>

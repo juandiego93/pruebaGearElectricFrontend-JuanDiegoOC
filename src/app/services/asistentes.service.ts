@@ -19,5 +19,9 @@ export class AsistentesService {
     return this.http.delete(`${this.URL_SERVER}asistentes/${id}`)
   }
 
+  public getUserToUpdate(user) {
+    return this.http.put(`${this.URL_SERVER}asistentes`, user)
+
+  }
 
 }

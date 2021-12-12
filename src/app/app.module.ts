@@ -9,11 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { AsistentesService } from './services/asistentes.service';
+import { CreateAndUpdateComponent } from './components/create-and-update/create-and-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    CreateAndUpdateComponent
   ],
   imports: [
     BrowserModule,

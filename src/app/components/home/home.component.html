@@ -1,12 +1,3 @@
-<nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="https://scontent.feoh4-4.fna.fbcdn.net/v/t1.18169-9/23622409_1637291922958944_352579239148441275_n.png?_nc_cat=108&cb=c578a115-c1c39920&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=oVZ-JZmIWQAAX_nqzuH&_nc_ht=scontent.feoh4-4.fna&oh=00_AT-IbcOKCdBXrYF0X97ci6WNF-HgP6DiOPiefvHDCrF67Q&oe=61DA61B3"
-                alt="" width="30" height="30" class="d-inline-block align-text-top mr-3">
-            GEAR Electric S.A.S.
-        </a>
-    </div>
-</nav>
 <div class="container text-center mt-5">
     <form>
         <div class="form-row align-items-center">
@@ -46,7 +37,8 @@
                             <td> {{asistent.status}} </td>
                             <td>
                                 <div>
-                                    <button class="btn btn-primary mr-1">Edit</button>
+                                    <button class="btn btn-primary mr-1"
+                                        [routerLink]="['update',asistent._id]">Edit</button>
                                     <button class="btn btn-danger ml-1"
                                         (click)="deleteSomeUser(asistent)">Delete</button>
                                 </div>
