@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
 
   public AllAsistentes = []
   public _stringToSearch: string
+  public numberAttendees = 0
 
   constructor(private asistentesService: AsistentesService) {
     this.__getAllAsistentes()
@@ -56,6 +57,7 @@ export class HomeComponent implements OnInit {
     this.asistentesService.getAllAsistentes()
       .subscribe((response: any) => {
         this.AllAsistentes = response
+        this.numberAttendees = response.length;
       })
   }
 

@@ -9,12 +9,5 @@ import { AsistentesService } from './services/asistentes.service';
 export class AppComponent {
 
   title = 'pruebaGearElectricFrontend';
-  public numberAttendees = 0
 
-  constructor(private asistentesService: AsistentesService) {
-    this.asistentesService.getAllAsistentes()
-      .subscribe((data: any) => {
-        this.numberAttendees = data.length
-      })
-  }
 }
