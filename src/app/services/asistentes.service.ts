@@ -24,6 +24,10 @@ export class AsistentesService {
     return this.http.get(`${this.URL_SERVER}asistentes`)
   }
 
+  public getAsistenteById(id) {
+    return this.http.get(`${this.URL_SERVER}asistentes/${id}`)
+  }
+
   public deleteUserById(id) {
     return this.http.delete(`${this.URL_SERVER}asistentes/${id}`)
   }
@@ -34,6 +38,10 @@ export class AsistentesService {
 
   public createNewUser(user) {
     return this.http.post(`${this.URL_SERVER}asistentes`, user, this.httpOptions)
+  }
+
+  public updateUser(user, id) {
+    return this.http.put(`${this.URL_SERVER}asistentes/${id}`, user, this.httpOptions)
   }
 
 }

@@ -9,6 +9,7 @@
                         <div class="form-group col-md-6">
                             <label for="typeDocument">Type Document</label>
                             <select formControlName="typeDocument" required class="form-control" name="typeDocument"
+                                [(ngModel)]="this.userByIdParam['typeDocument']" [compareWith]="compareTypeDocuments"
                                 [ngClass]="{ 'is-invalid': this.submited && this.Form_['controls']['typeDocument']['errors'] }"
                                 id="typeDocument">
                                 <option value="" selected disabled hidden>Choose here</option>
@@ -23,8 +24,9 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="document">Document</label>
-                            <input formControlName="document" required type="text" class="form-control" name="document"
-                                id="document" placeholder="1234567890"
+                            <input formControlName="document" required [(ngModel)]="this.userByIdParam['document']"
+                                [value]="this.userByIdParam['document']" type="text" class="form-control"
+                                name="document" id="document" placeholder="1234567890"
                                 [ngClass]="{ 'is-invalid': this.submited && this.Form_['controls']['document']['errors'] }">
                             <div *ngIf="this.submited && this.Form_['controls']['document']['errors']"
                                 class="invalid-feedback">
@@ -43,8 +45,9 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="name">Name</label>
-                            <input formControlName="name" required type="text" class="form-control" name="name"
-                                id="name" placeholder="1234567890"
+                            <input [(ngModel)]="this.userByIdParam['name']" [value]="this.userByIdParam['name']"
+                                formControlName="name" required type="text" class="form-control" name="name" id="name"
+                                placeholder="1234567890"
                                 [ngClass]="{ 'is-invalid': this.submited && this.Form_['controls']['name']['errors'] }">
                             <div *ngIf="this.submited && this.Form_['controls']['name']['errors']"
                                 class="invalid-feedback">
@@ -61,7 +64,8 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="lastname">Lastname</label>
-                            <input formControlName="lastname" name="lastname" required type="text" class="form-control"
+                            <input [(ngModel)]="this.userByIdParam['lastname']" [value]="this.userByIdParam['lastname']"
+                                formControlName="lastname" name="lastname" required type="text" class="form-control"
                                 id="lastname" placeholder="Fulanito"
                                 [ngClass]="{ 'is-invalid': this.submited && this.Form_['controls']['lastname']['errors'] }">
                             <div *ngIf="this.submited && this.Form_['controls']['lastname']['errors']"
@@ -81,7 +85,8 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="email">Email</label>
-                            <input formControlName="email" required type="email" class="form-control" id="email"
+                            <input [(ngModel)]="this.userByIdParam['email']" [value]="this.userByIdParam['email']"
+                                formControlName="email" required type="email" class="form-control" id="email"
                                 placeholder="Email"
                                 [ngClass]="{ 'is-invalid': this.submited && this.Form_['controls']['email']['errors'] }">
                             <div *ngIf="this.submited && this.Form_['controls']['email']['errors']"
@@ -96,7 +101,8 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="phone">Phone</label>
-                            <input formControlName="phone" required type="number" class="form-control" name="phone"
+                            <input [(ngModel)]="this.userByIdParam['phone']" [value]="this.userByIdParam['phone']"
+                                formControlName="phone" required type="number" class="form-control" name="phone"
                                 id="phone" placeholder="1234567890"
                                 [ngClass]="{ 'is-invalid': this.submited && this.Form_['controls']['phone']['errors'] }">
                             <div *ngIf="this.submited && this.Form_['controls']['phone']['errors']"
@@ -115,7 +121,8 @@
                     </div>
                     <div class="form-group">
                         <div class="form-check">
-                            <input formControlName="status" class="form-check-input" type="checkbox" id="gridCheck"
+                            <input [(ngModel)]="this.userByIdParam['status']" [value]="this.userByIdParam['status']"
+                                formControlName="status" class="form-check-input" type="checkbox" id="gridCheck"
                                 [ngClass]="{ 'is-invalid': this.submited && this.Form_['controls']['status']['errors'] }">
                             <label class="form-check-label" for="gridCheck">
                                 Active

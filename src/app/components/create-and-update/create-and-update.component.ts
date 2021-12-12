@@ -16,7 +16,17 @@ export class CreateAndUpdateComponent implements OnInit {
   public Form_: FormGroup
   public submited: Boolean
   public arrayTypeDocuments: any[]
-
+  public userByIdParam: any = {
+    "_id": "",
+    "typeDocument": "",
+    "document": "",
+    "name": "",
+    "lastname": "",
+    "email": "",
+    "phone": 0,
+    "status": false,
+    "__v": 0
+  }
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -31,6 +41,7 @@ export class CreateAndUpdateComponent implements OnInit {
       this.title = 'Create User'
     } else {
       this.title = 'Update User'
+      this.getUserByIdParam()
     }
   }
 
@@ -39,7 +50,13 @@ export class CreateAndUpdateComponent implements OnInit {
   public sendRequestNewUser() {
     this.submited = true
     if (this.Form_.valid) {
-      this.asistentesService.createNewUser(this.Form_.value)
+      let promiseToSendForm
+      if (this.idUserParam) {
+        promiseToSendForm = this.asistentesService.updateUser(this.Form_.value, this.idUserParam)
+      } else {
+        promiseToSendForm = this.asistentesService.createNewUser(this.Form_.value)
+      }
+      promiseToSendForm
         .subscribe(data => {
           if (data['ok']) {
             alertify.success(data['message'])
@@ -53,8 +70,24 @@ export class CreateAndUpdateComponent implements OnInit {
     }
   }
 
-  private getUserByIdParam() { 
-    
+  public compareTypeDocuments(type1, type2) {
+    if (type1 == null || type2 == null) {
+      return false;
+    }
+    return type1.nombre === type2.nombre;
+  }
+
+  private getUserByIdParam() {
+    this.asistentesService.getAsistenteById(this.idUserParam)
+      .subscribe(data => {
+        console.log(data)
+        if (data['ok']) {
+          this.userByIdParam = data['user'];
+        }
+      }, (error) => {
+        console.log(error)
+        alertify.error(error.message)
+      })
   }
 
   private getTypeDocuments() {
