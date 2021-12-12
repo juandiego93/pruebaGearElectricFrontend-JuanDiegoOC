@@ -23,13 +23,14 @@ export class HomeComponent implements OnInit {
   public searchUsersByFields() {
     const auxArray = this.AllAsistentes
     const arrayWithFilter = auxArray.filter((value) => {
-      if ((value.name == this._stringToSearch) || (value.document == this._stringToSearch) || (value.email == this._stringToSearch)) {
+      if ((value.name.indexOf(this._stringToSearch) > -1) || (value.document.indexOf(this._stringToSearch) > -1) || (value.email.indexOf(this._stringToSearch) > -1)) {
         return value
       }
     })
     if (arrayWithFilter.length > 0) {
       this.AllAsistentes = arrayWithFilter
-    } else if (this._stringToSearch == '') {
+    }
+    if (this._stringToSearch == '' || !this._stringToSearch || this._stringToSearch.length == 0) {
       this.__getAllAsistentes()
     }
   }
