@@ -1,0 +1,60 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="https://scontent.feoh4-4.fna.fbcdn.net/v/t1.18169-9/23622409_1637291922958944_352579239148441275_n.png?_nc_cat=108&cb=c578a115-c1c39920&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=oVZ-JZmIWQAAX_nqzuH&_nc_ht=scontent.feoh4-4.fna&oh=00_AT-IbcOKCdBXrYF0X97ci6WNF-HgP6DiOPiefvHDCrF67Q&oe=61DA61B3"
+                alt="" width="30" height="30" class="d-inline-block align-text-top mr-3">
+            GEAR Electric S.A.S.
+        </a>
+    </div>
+</nav>
+<div class="container text-center mt-5">
+    <form>
+        <div class="form-row align-items-center">
+            <div class="col-8 offset-md-2">
+                <input type="text" class="form-control mb-2" name="search_input_" id="search_input_"
+                    [(ngModel)]="_stringToSearch" placeholder="Search by document, name or email..."
+                    (keyup)="searchUsersByFields()">
+            </div>
+        </div>
+    </form>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title mb-4">Event User List</h4>
+            <h6 class="card-subtitle mt-2 text-muted"> </h6>
+            <div class="card-text">
+                <table class="table table-default table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Document</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let asistent of this.AllAsistentes; let i_ = index">
+                            <th scope="row"> {{i_+1}} </th>
+                            <td> {{asistent.document}} </td>
+                            <td> {{asistent.name}} </td>
+                            <td> {{asistent.lastname}} </td>
+                            <td> {{asistent.email}} </td>
+                            <td> {{asistent.status}} </td>
+                            <td> {{asistent.status}} </td>
+                            <td>
+                                <div>
+                                    <button class="btn btn-primary mr-1">Edit</button>
+                                    <button class="btn btn-danger ml-1"
+                                        (click)="deleteSomeUser(asistent)">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
